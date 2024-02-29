@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Spotify API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="main"></div>
+  <div id="artists"></div>
+  <div id="track"></div>
+  <div id="oauth"></div>
+
+  <template id="login">
+    <h1>Spotify API</h1>
+    <button id="login-button" data-bind-onclick="loginWithSpotifyClick();"> Log in with Spotify </button>
+  </template>
+
+  <template id="logged-in-template">
+    <h1>Logged in as <span data-bind="display_name"></span></h1>
+    <img width="150" data-bind-src="images[0].url" data-bind-alt="display_name" />
+    <a href="listV.html">see listview</a>
+    <table>
+      <tr>
+        <td>Display name</td>
+        <td data-bind="display_name"></td>
+      </tr>
+      <tr>
+        <td>Id</td>
+        <td data-bind="id"></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td data-bind="email"></td>
+      </tr>
+      <tr>
+        <td>Spotify URI</td>
+        <td>
+          <a data-bind="external_urls.spotify" data-bind-href="external_urls.spotify"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>Link </dt>
+        <td>
+          <a data-bind="href" data-bind-href="href"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>Profile Image</td>
+        <td>
+          <a data-bind-href="images[0].url" data-bind="images[0].url"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>Country</td>
+        <td data-bind="country"></td>
+      </tr>
+      <tr>
+        <td>Followers</td>
+        <td data-bind="followers.total"></td>
+      </tr>
+      <tr>
+        <td>Product</td>
+        <td data-bind="product"></td>
+      </tr>
+    </table>
+
+    <button id="refresh-token-button" data-bind-onclick="refreshTokenClick();">Refresh Token</button>
+    <button id="logout-button" data-bind-onclick="logoutClick();">Log out</button>
+  </template>
+
+  <template id="artists-template">
+    <h2>Top Artists Past 4 Weeks</h2>
+    <table>
+      <tr>
+        <td>1</td>
+        <td data-bind="items[0].name"></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td data-bind="items[1].name"></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td data-bind="items[2].name"></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td data-bind="items[3].name"></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td data-bind="items[4].name"></td>
+      </tr>
+    </table>
+  </template>
+
+  <template id="track-template">
+    <h2>Top Tracks Past 4 Weeks</h2>
+    <table>
+      <tr>
+        <td>1</td>
+        <td data-bind="items[0].name"></td>
+        <td data-bind="items[0].album.artists[0].name"></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td data-bind="items[1].name"></td>
+        <td data-bind="items[1].album.artists[0].name"></td>
+
+      </tr>
+      <tr>
+        <td>3</td>
+        <td data-bind="items[2].name"></td>
+        <td data-bind="items[2].album.artists[0].name"></td>
+
+      </tr>
+      <tr>
+        <td>4</td>
+        <td data-bind="items[3].name"></td>
+        <td data-bind="items[3].album.artists[0].name"></td>
+
+      </tr>
+      <tr>
+        <td>5</td>
+        <td data-bind="items[4].name"></td>
+        <td data-bind="items[4].album.artists[0].name"></td>
+
+      </tr>
+    </table>
+  </template>
+
+  <template id="oauth-template">
+    <h2>oAuth info</h2>
+    <table>
+      <tr>
+        <td>Access token</td>
+        <td data-bind="access_token"></td>
+      </tr>
+      <tr>
+        <td>Refresh token</td>
+        <td data-bind="refresh_token"></td>
+      </tr>
+      <tr>
+        <td>Expiration at</td>
+        <td data-bind="expires">${getExpirationDate(expires_in)}</td>
+      </tr>
+    </table>
+  </template>
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>

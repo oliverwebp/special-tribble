@@ -1,0 +1,23 @@
+{
+  "name": "spotifyapi",
+  "version": "1.0.0",
+  "description": "test spotifyapi",
+  "scripts": {
+    "start": "http-server --cors public"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "http-server": "^14.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3"
+  },
+  "main": "index.js",
+  "keywords": []
+}
